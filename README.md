@@ -4,6 +4,10 @@
 
 纯 Go + `syscall` 动态调用 Win32，**无 cgo、无第三方依赖**，编译出来是单个约 3 MB 的 exe。
 
+## 下载
+
+从 [Releases](https://github.com/Mei-Nagano/MemMonitor/releases/latest) 下载 `memmon.exe`，双击即可运行，免安装。
+
 ## 特性
 
 **监控**
