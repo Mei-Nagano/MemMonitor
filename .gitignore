@@ -1,0 +1,38 @@
+# ---- 编译产物 ----
+# 主程序与 tools/ 下调试工具的可执行文件
+*.exe
+*.exe~
+*.dll
+*.pdb
+
+# go build 覆盖正在运行的 exe 时留下的备份
+memmon.exe~
+*.exe.old
+
+# 发布目录
+/dist/
+/bin/
+
+# ---- 调试临时文件 ----
+# 截图/放大对比用的中间图，一律不入库（含 --dump 导出的预览图）
+_*.png
+preview*.png
+*.tmp
+
+# 导出的内存记录（默认存到「另存为」选的位置，若落到仓库里则忽略）
+memlog-*.csv
+*.log
+
+# ---- 系统与编辑器 ----
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# ---- 本地工具数据 ----
+# 含对话记忆笔记（.workbuddy-ai/memory/*.md），属本机工作记录，不入库。
+# 若想把记忆笔记一起提交，删掉下面这行即可。
+.workbuddy-ai/
