@@ -217,17 +217,17 @@ func initImageList() {
 
 // imageListVtbl 只声明到 IImageList::GetIcon 为止（索引 10）的虚表布局。
 type imageListVtbl struct {
-	QueryInterface uintptr
-	AddRef         uintptr
-	Release        uintptr
-	Add            uintptr
-	ReplaceIcon    uintptr
+	QueryInterface  uintptr
+	AddRef          uintptr
+	Release         uintptr
+	Add             uintptr
+	ReplaceIcon     uintptr
 	SetOverlayImage uintptr
-	Replace        uintptr
-	AddMasked      uintptr
-	Draw           uintptr
-	Remove         uintptr
-	GetIcon        uintptr
+	Replace         uintptr
+	AddMasked       uintptr
+	Draw            uintptr
+	Remove          uintptr
+	GetIcon         uintptr
 }
 
 // imageListIcon 调用 IImageList::GetIcon（虚表索引 10）。

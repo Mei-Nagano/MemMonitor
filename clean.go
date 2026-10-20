@@ -20,14 +20,14 @@ var (
 	ntdll    = syscall.NewLazyDLL("ntdll.dll")
 	advapi32 = syscall.NewLazyDLL("advapi32.dll")
 
-	pEmptyWorkingSet           = psapi.NewProc("EmptyWorkingSet")
-	pGetCurrentProcess         = kernel32.NewProc("GetCurrentProcess")
-	pGetSystemInfo             = kernel32.NewProc("GetSystemInfo")
-	pNtSetSystemInformation    = ntdll.NewProc("NtSetSystemInformation")
-	pNtQuerySystemInformation  = ntdll.NewProc("NtQuerySystemInformation")
-	pOpenProcessToken          = advapi32.NewProc("OpenProcessToken")
-	pLookupPrivilegeValueW     = advapi32.NewProc("LookupPrivilegeValueW")
-	pAdjustTokenPrivileges     = advapi32.NewProc("AdjustTokenPrivileges")
+	pEmptyWorkingSet          = psapi.NewProc("EmptyWorkingSet")
+	pGetCurrentProcess        = kernel32.NewProc("GetCurrentProcess")
+	pGetSystemInfo            = kernel32.NewProc("GetSystemInfo")
+	pNtSetSystemInformation   = ntdll.NewProc("NtSetSystemInformation")
+	pNtQuerySystemInformation = ntdll.NewProc("NtQuerySystemInformation")
+	pOpenProcessToken         = advapi32.NewProc("OpenProcessToken")
+	pLookupPrivilegeValueW    = advapi32.NewProc("LookupPrivilegeValueW")
+	pAdjustTokenPrivileges    = advapi32.NewProc("AdjustTokenPrivileges")
 )
 
 const (

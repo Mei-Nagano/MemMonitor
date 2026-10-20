@@ -16,12 +16,12 @@ var (
 	dpiScale = 1.0
 	hInst    uintptr
 
-	fontName uintptr
-	fontSub  uintptr
-	fontMem  uintptr
-	fontPct  uintptr
-	fontList uintptr
-	fontUI   uintptr
+	fontName   uintptr
+	fontSub    uintptr
+	fontMem    uintptr
+	fontPct    uintptr
+	fontList   uintptr
+	fontUI     uintptr
 	fontRowMem uintptr
 )
 
@@ -144,7 +144,13 @@ func pctColWidth() int32 {
 // 这样拖动到最窄时也不会出现内存数字被截断的情况。
 func minCardWidth() int32 {
 	pad := float64(sc(11))
-	need := pad*2 + float64(sc(26)+sc(10)+sc(60)) // 图标 + 进程名至少留一点
+	need := pad * 2
+	if cfg.ShowIcon {
+		need += float64(sc(26))
+	}
+	if cfg.ShowName || cfg.ShowPid {
+		need += float64(sc(10) + sc(60)) // 图标与文字间距 + 进程名最少可读宽度
+	}
 
 	if cfg.ShowMem || cfg.ShowPct {
 		row := pad * 2
@@ -265,7 +271,8 @@ func layoutCard() cardLayout {
 
 	L.HasName = cfg.ShowName
 	L.HasPid = cfg.ShowPid
-	L.HasIcon = cfg.ShowIcon && (cfg.ShowName || cfg.ShowPid)
+	// 图标是独立开关，不受进程名/PID 是否显示影响
+	L.HasIcon = cfg.ShowIcon
 	L.HasMem = cfg.ShowMem
 	L.HasPct = cfg.ShowPct
 	L.HasSpark = cfg.ShowSpark
@@ -277,25 +284,37 @@ func layoutCard() cardLayout {
 		textX = x + sc(26) + sc(10)
 	}
 
-	if L.HasName || L.HasPid {
+	// 顶部信息区：图标 / 进程名 / PID 任意组合都要排得下。
+	// 只开图标时也要留够一行高度，否则图标会压到下面的内存行。
+	topH := int32(0)
+	if L.HasName {
+		topH += sc(19)
+	}
+	if L.HasPid {
+		topH += sc(17)
+	}
+	if L.HasIcon && topH < sc(26) {
+		topH = sc(26)
+	}
+	if topH > 0 {
 		top := y
+		ty := top
 		if L.HasName {
-			L.Name = RECT{textX, y, w - pad, y + sc(19)}
-			y += sc(19)
+			L.Name = RECT{textX, ty, w - pad, ty + sc(19)}
+			ty += sc(19)
 		}
 		if L.HasPid {
-			L.Pid = RECT{textX, y, w - pad, y + sc(17)}
-			y += sc(17)
+			L.Pid = RECT{textX, ty, w - pad, ty + sc(17)}
+			ty += sc(17)
 		}
 		if L.HasIcon {
-			blockH := y - top
-			iy := top + (blockH-sc(26))/2
+			iy := top + (topH-sc(26))/2
 			if iy < top {
 				iy = top
 			}
 			L.Icon = RECT{x, iy, x + sc(26), iy + sc(26)}
 		}
-		y += sc(7)
+		y = top + topH + sc(7)
 	}
 
 	if L.HasMem || L.HasPct {

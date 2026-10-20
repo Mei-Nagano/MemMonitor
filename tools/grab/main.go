@@ -14,11 +14,11 @@ import (
 )
 
 var (
-	user32   = syscall.NewLazyDLL("user32.dll")
-	gdi32    = syscall.NewLazyDLL("gdi32.dll")
-	pGetDC   = user32.NewProc("GetDC")
-	pRelDC   = user32.NewProc("ReleaseDC")
-	pBitBlt = gdi32.NewProc("BitBlt")
+	user32              = syscall.NewLazyDLL("user32.dll")
+	gdi32               = syscall.NewLazyDLL("gdi32.dll")
+	pGetDC              = user32.NewProc("GetDC")
+	pRelDC              = user32.NewProc("ReleaseDC")
+	pBitBlt             = gdi32.NewProc("BitBlt")
 	pCreateCompatibleDC = gdi32.NewProc("CreateCompatibleDC")
 	pCreateDIBSection   = gdi32.NewProc("CreateDIBSection")
 	pSelectObject       = gdi32.NewProc("SelectObject")

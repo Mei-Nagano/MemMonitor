@@ -12,10 +12,16 @@ func main() {
 	in, out := os.Args[1], os.Args[2]
 	n, _ := strconv.Atoi(os.Args[3])
 	f, err := os.Open(in)
-	if err != nil { fmt.Println(err); return }
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 	src, err := png.Decode(f)
 	f.Close()
-	if err != nil { fmt.Println(err); return }
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 	b := src.Bounds()
 	w, h := b.Dx()*n, b.Dy()*n
 	dst := image.NewRGBA(image.Rect(0, 0, w, h))

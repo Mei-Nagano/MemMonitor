@@ -41,7 +41,7 @@ type pickerState struct {
 
 	SortBy   int  // 0=内存 1=名称
 	SortDesc bool // 倒序
-	Pressed  int // 鼠标按下中的按钮
+	Pressed  int  // 鼠标按下中的按钮
 
 	W, H int32
 }
@@ -67,19 +67,19 @@ func initPickerResources() {
 // ---------------- 布局 ----------------
 
 type pickLayout struct {
-	W, H      int32
-	Title     RECT
-	Close     RECT
-	SearchBox RECT
-	Search    RECT
-	List      RECT
-	BtnCancel RECT
-	BtnOK     RECT
+	W, H        int32
+	Title       RECT
+	Close       RECT
+	SearchBox   RECT
+	Search      RECT
+	List        RECT
+	BtnCancel   RECT
+	BtnOK       RECT
 	BtnSortMem  RECT
 	BtnSortName RECT
 	BtnRefresh  RECT
 	BtnAuto     RECT
-	RowH      int32
+	RowH        int32
 }
 
 func layoutPicker() pickLayout {

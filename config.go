@@ -31,9 +31,9 @@ type Config struct {
 
 	AutoRefresh bool `json:"auto_refresh"` // 选择窗口自动刷新进程列表
 
-	LogEnabled   bool `json:"log_enabled"`    // 记录内存占用日志
-	AutoCleanPct int  `json:"auto_clean_pct"` // 整机内存占用超过该百分比时自动清理，0=关闭
-	AutoCleanCool int `json:"auto_clean_cool"` // 自动清理冷却秒数
+	LogEnabled    bool `json:"log_enabled"`     // 记录内存占用日志
+	AutoCleanPct  int  `json:"auto_clean_pct"`  // 整机内存占用超过该百分比时自动清理，0=关闭
+	AutoCleanCool int  `json:"auto_clean_cool"` // 自动清理冷却秒数
 
 	SortBy   int  `json:"sort_by"`   // 0=内存 1=名称
 	SortDesc bool `json:"sort_desc"` // 倒序
@@ -45,24 +45,24 @@ type Config struct {
 
 func defaultConfig() Config {
 	return Config{
-		ShowIcon:  true,
-		ShowName:  true,
-		ShowPid:   true,
-		ShowMem:   true,
-		ShowPct:   true,
-		ShowSpark: true,
-		TopMost:   true,
-		Alpha:     236,
-		Interval:  1000,
-		Metric:    "private",
-		Width:     240,
-		Scale:     100,
-		AutoRefresh: true,
-		LogEnabled:  true,
-		AutoCleanPct: 0,
+		ShowIcon:      true,
+		ShowName:      true,
+		ShowPid:       true,
+		ShowMem:       true,
+		ShowPct:       true,
+		ShowSpark:     true,
+		TopMost:       true,
+		Alpha:         236,
+		Interval:      1000,
+		Metric:        "private",
+		Width:         240,
+		Scale:         100,
+		AutoRefresh:   true,
+		LogEnabled:    true,
+		AutoCleanPct:  0,
 		AutoCleanCool: 300,
-		SortBy:    0,
-		SortDesc:  true,
+		SortBy:        0,
+		SortDesc:      true,
 	}
 }
 

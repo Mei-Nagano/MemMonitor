@@ -283,7 +283,8 @@ func main() {
 		fmt.Printf("exported %d rows -> %s\n", n, os.Args[3])
 		return
 	}
-	if len(os.Args) > 2 && os.Args[1] == "--clean" {		cfg = loadConfig()
+	if len(os.Args) > 2 && os.Args[1] == "--clean" {
+		cfg = loadConfig()
 		total, avail := memStatus()
 		fmt.Printf("RAM total=%.1f MB avail=%.1f MB load=%d%% standby=%.1f MB\n",
 			float64(total)/1048576, float64(avail)/1048576, memLoad(),

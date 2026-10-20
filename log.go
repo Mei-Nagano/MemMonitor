@@ -21,10 +21,10 @@ const (
 )
 
 type memLog struct {
-	f       *os.File
-	w       *bufio.Writer
-	day     string
-	last    time.Time
+	f        *os.File
+	w        *bufio.Writer
+	day      string
+	last     time.Time
 	disabled bool
 }
 
